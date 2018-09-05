@@ -1,0 +1,29 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource prefix="/translations">
+        <file alias="bg">locale/snodecoin_bg.qm</file>
+        <file alias="ca">locale/snodecoin_ca.qm</file>
+        <file alias="cs">locale/snodecoin_cs.qm</file>
+        <file alias="da">locale/snodecoin_da.qm</file>
+        <file alias="de">locale/snodecoin_de.qm</file>
+        <file alias="en">locale/snodecoin_en.qm</file>
+        <file alias="en_US">locale/snodecoin_en_US.qm</file>
+        <file alias="es">locale/snodecoin_es.qm</file>
+        <file alias="fi">locale/snodecoin_fi.qm</file>
+        <file alias="fr_FR">locale/snodecoin_fr_FR.qm</file>
+        <file alias="it">locale/snodecoin_it.qm</file>
+        <file alias="ja">locale/snodecoin_ja.qm</file>
+        <file alias="ko_KR">locale/snodecoin_ko_KR.qm</file>
+        <file alias="nl">locale/snodecoin_nl.qm</file>
+        <file alias="pl">locale/snodecoin_pl.qm</file>
+        <file alias="pt">locale/snodecoin_pt.qm</file>
+        <file alias="pt_BR">locale/snodecoin_pt_BR.qm</file>
+        <file alias="ro_RO">locale/snodecoin_ro_RO.qm</file>
+        <file alias="ru">locale/snodecoin_ru.qm</file>
+        <file alias="sk">locale/snodecoin_sk.qm</file>
+        <file alias="sv">locale/snodecoin_sv.qm</file>
+        <file alias="tr">locale/snodecoin_tr.qm</file>
+        <file alias="uk">locale/snodecoin_uk.qm</file>
+        <file alias="zh_CN">locale/snodecoin_zh_CN.qm</file>
+        <file alias="zh_TW">locale/snodecoin_zh_TW.qm</file>
+    </qresource>
+</RCC>

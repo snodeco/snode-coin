@@ -1,0 +1,26 @@
+[Unit]
+Description=Snodecoin's distributed currency daemon
+After=network.target
+
+[Service]
+User=snodecoin
+Group=snodecoin
+
+Type=forking
+PIDFile=/var/lib/snodecoind/snodecoind.pid
+
+ExecStart=/usr/bin/snodecoind -daemon -pid=/var/lib/snodecoind/snodecoind.pid \
+          -conf=/etc/snodecoin/snodecoin.conf -datadir=/var/lib/snodecoind
+
+ExecStop=-/usr/bin/snodecoin-cli -conf=/etc/snodecoin/snodecoin.conf \
+         -datadir=/var/lib/snodecoind stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

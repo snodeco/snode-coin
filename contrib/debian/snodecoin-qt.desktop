@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Snodecoin
+Comment=Snodecoin P2P Cryptocurrency
+Comment[fr]=Snodecoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Snodecoin, eşten eşe kriptografik sanal para birimi
+Exec=snodecoin-qt %u
+Terminal=false
+Type=Application
+Icon=snodecoin128
+MimeType=x-scheme-handler/snodecoin;
+Categories=Office;Finance;

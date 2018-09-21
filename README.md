@@ -41,15 +41,15 @@
 <table>
 <tbody>
 	<tr><th>Premine Phase</th><th>Block Height</th><th>Block Reward</th><th>Total Premine</th></tr>
-	<tr><td></td><td>1 - 15</td><td>100 000 SND</td><td>1 500 000 SND</th></tr>
+	<tr><td>Ended</td><td>1 - 15</td><td>100 000 SND</td><td>1 500 000 SND</th></tr>
 </tbody>
 <tbody>
 	<tr><th>Kickstart Phase</th><th>Block Height</th><th>Block Reward</th><th>Masternodes</th><th>Miners</th></tr>	
-	<tr><td></td><td>16 - 9 000</td><td>0.001 SND</td><td>0 SND</td><td>0.001 SND</td></tr>
+	<tr><td>Ended</td><td>16 - 9 000</td><td>0.001 SND</td><td>0 SND</td><td>0.001 SND</td></tr>
 </tbody>
 <tbody>
 	<tr><th>POW Presale Phase</th><th>Block Height</th><th>Block Reward</th><th>Masternodes</th><th>Miners</th></tr>	
-	<tr><td></td><td>9 001 - 13 000</td><td>80.001 SND</td><td>80 SND</td><td>0.001 SND</td></tr>
+	<tr><td>Ended</td><td>9 001 - 13 000</td><td>80.001 SND</td><td>80 SND</td><td>0.001 SND</td></tr>
 </tbody>
 </table>
 
@@ -57,7 +57,7 @@
 <table>
 <tbody>
 	<tr><th>POS Presale Phase</th><th>Block Height</th><th>Block Reward</th><th>Masternodes</th><th>Stakers</th></tr>	
-	<tr><td></td><td>13 001 - 15 000</td><td>80.001 SND</td><td>80 SND</td><td>0.001 SND</td></tr>
+	<tr><td>Ongoing</td><td>13 001 - 15 000</td><td>80.001 SND</td><td>80 SND</td><td>0.001 SND</td></tr>
 </tbody>
 <tbody>
 	<tr><th>PoS Phase I</th><th>Block Height</th><th>Block Reward</th><th>Masternodes</th><th>Stakers</th></tr>	

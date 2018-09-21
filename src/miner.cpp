@@ -129,7 +129,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
     // if there are no masternodes, nValue will be blockValue, if there are it will
     // be overwritten
     CBlockIndex* prev = chainActive.Tip();
-    // Test for Presale Phase 
+    // Snode Presale Phase 
     if (prev->nHeight < Params().PRESALE_END_BLOCK() && prev->nHeight >= Params().PRESALE_START_BLOCK()) {
         txNew.vout[0].nValue = 0.001 * COIN;
     } else {

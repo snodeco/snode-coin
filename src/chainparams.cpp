@@ -52,14 +52,16 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (0, uint256("0x00000dd8e25853fb3242874e77d0f1903de16224fd5ed4a617a6e6ba6a2d3306"));	
+    (0, uint256("0x00000dd8e25853fb3242874e77d0f1903de16224fd5ed4a617a6e6ba6a2d3306"))
+    (13001, uint256("0x4c9ec79f436276d26b8247ec9d440addabd0cd695e836af4705794d5c1162a80"))
+    (13100, uint256("0x73cbd748f06369612840753c99632a5c319d8ea252eeada6dcac23ac094efb81")); 
     
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-   1535535089,
-    0,    // * total number of transactions between genesis and last checkpoint
+   1537453894,
+    13549,    // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
-    200        // * estimated number of transactions per day after checkpoint
+    500        // * estimated number of transactions per day after checkpoint
 };
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
@@ -124,9 +126,9 @@ public:
 
         /** Height or Time Based Activations **/
         nPresaleStartBlock = 9000; // Presale Start
-        nPresaleEndBlock = 16000; // Presale End
+        nPresaleEndBlock = 15000; // Presale End 15000 
         
-        nLastPOWBlock = 172800; // Snodecoin 6 months PoW 
+        nLastPOWBlock = 13000; // POW ends at block 13000
         nBlockEnforceSerialRange = 1; //Enforce serial range starting this block
         nBlockRecalculateAccumulators = -1; //Trigger a recalculation of accumulators
         nBlockFirstFraudulent = -1; //First block that bad serials emerged
@@ -159,12 +161,20 @@ public:
 
         // DNS Seeders maintaining a dynamic list of active nodes
         vSeeds.push_back(CDNSSeedData("snode.co", "seed.snode.co"));      // Primary DNS Seeder, need to have a domain name
-        vSeeds.push_back(CDNSSeedData("51.15.91.74", "51.15.91.74"));
-        vSeeds.push_back(CDNSSeedData("51.15.127.79", "51.15.127.79"));
-        vSeeds.push_back(CDNSSeedData("51.15.98.254", "51.15.98.254"));
-        vSeeds.push_back(CDNSSeedData("51.15.37.133", "51.15.37.133"));      
-        vSeeds.push_back(CDNSSeedData("51.15.96.177", "51.15.96.177"));
+        vSeeds.push_back(CDNSSeedData("165.227.136.34", "165.227.136.34"));
+        vSeeds.push_back(CDNSSeedData("142.93.163.217", "142.93.163.217"));
+        vSeeds.push_back(CDNSSeedData("51.15.231.174", "51.15.231.174"));
+        vSeeds.push_back(CDNSSeedData("138.68.97.16", "138.68.97.16"));
+        vSeeds.push_back(CDNSSeedData("51.15.231.79", "51.15.231.79"));
+        vSeeds.push_back(CDNSSeedData("51.158.70.229", "51.158.70.229"));
+        vSeeds.push_back(CDNSSeedData("51.15.231.79", "51.15.231.79"));
         vSeeds.push_back(CDNSSeedData("51.15.112.87", "51.15.112.87"));
+        vSeeds.push_back(CDNSSeedData("51.15.96.177", "51.15.96.177"));
+        vSeeds.push_back(CDNSSeedData("51.15.37.133", "51.15.37.133"));
+        vSeeds.push_back(CDNSSeedData("51.15.98.254", "51.15.98.254"));
+        vSeeds.push_back(CDNSSeedData("51.15.207.32", "51.15.207.32"));
+        vSeeds.push_back(CDNSSeedData("51.158.76.73", "51.158.76.73"));
+        vSeeds.push_back(CDNSSeedData("51.158.64.246", "51.158.64.246"));
 
         // Base58prefixes Information:  https://en.bitcoin.it/wiki/List_of_address_prefixes      
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 63);   //S  
@@ -186,7 +196,7 @@ public:
         fDefaultConsistencyChecks = false;
         fRequireStandard = true;
         fMineBlocksOnDemand = false;
-        fSkipProofOfWorkCheck = false;
+        fSkipProofOfWorkCheck = true;
         fTestnetToBeDeprecatedFieldRPC = false;
         fHeadersFirstSyncingActive = false;
 
@@ -243,8 +253,8 @@ public:
         nMinerThreads = 0;
         nTargetTimespan = 60 * 60; // Snodecoin: 1 hour
         nTargetSpacing = 90;  // Snodecoin: 90 seconds
-        nLastPOWBlock = 200;  
-        nMaturity = 50;  
+        nLastPOWBlock = 1000;  
+        nMaturity = 10;  
         nMasternodeCountDrift = 4;
         //nModifierUpdateBlock = 0; // Snodecoin TBD
         nMaxMoneyOut =  60000000 * COIN; // Snodecoin maxcap 60M
@@ -266,7 +276,6 @@ public:
         
         // Add seeder node information here
         vSeeds.push_back(CDNSSeedData("snode.co", "seed.snode.co"));      // Primary DNS Seeder, need to have a domain name
-        vSeeds.push_back(CDNSSeedData("51.15.91.74", "51.15.91.74"));      // Secondary DNS Seeder
         vSeeds.push_back(CDNSSeedData("51.15.127.79", "51.15.127.79"));
         vSeeds.push_back(CDNSSeedData("51.15.98.254", "51.15.98.254"));
         vSeeds.push_back(CDNSSeedData("51.15.37.133", "51.15.37.133"));      

@@ -13,6 +13,7 @@
 #include "primitives/block.h"
 #include "uint256.h"
 #include "util.h"
+#include "spork.h"
 
 #include <math.h>
 
@@ -117,10 +118,10 @@ bool CheckProofOfWork(uint256 hash, unsigned int nBits)
     bool fNegative;
     bool fOverflow;
     uint256 bnTarget; 
-    /* // skip for PoS only	
+     // skip for PoS only	
     if (Params().SkipProofOfWorkCheck())
         return true;
-    */
+    
     bnTarget.SetCompact(nBits, &fNegative, &fOverflow); 
 
     // Check range

@@ -77,7 +77,7 @@ int nScriptCheckThreads = 0;
 bool fImporting = false;
 bool fReindex = false;
 bool fTxIndex = true;
-bool fIsBareMultisigStd = true;
+//bool fIsBareMultisigStd = true; defined = false in script.cpp
 bool fCheckBlockIndex = false;
 bool fVerifyingBlocks = false;
 unsigned int nCoinCacheSize = 5000;
@@ -1586,6 +1586,34 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
         }
     }
 
+    const char *quicksendname;
+    BOOST_FOREACH(const CTxOut& txout, tx.vout) {
+        quicksendname = txout.scriptPubKey.IsQuicksended();
+        if (quicksendname) {
+           LogPrintf("AcceptToMemoryPool : speeding up transaction %s with quicksend output (%s)", tx.GetHash().ToString().c_str(), quicksendname);
+           return error("AcceptToMemoryPool : speeding up transaction %s with quicksend output (%s)", tx.GetHash().ToString().c_str(), quicksendname);
+        }
+    }
+    
+    BOOST_FOREACH(const CTxIn txin, tx.vin) {
+        const COutPoint &outpoint = txin.prevout;
+
+        CTransaction tx21;
+        uint256 hashi;
+
+        if(GetTransaction(outpoint.hash, tx21, hashi)){
+            quicksendname = tx21.vout[outpoint.n].scriptPubKey.IsQuicksended();
+
+            if (quicksendname) {
+                LogPrintf("CTxMemPool::accept() : speeding up transaction %s with quicksend input (%s)\n", tx.GetHash().ToString().c_str(), quicksendname);
+                return error("CTxMemPool::accept() : speeding up transaction %s with quicksend input (%s)", tx.GetHash().ToString().c_str(), quicksendname);
+            }
+        } else {
+            LogPrintf("Tx Not found");
+        }
+    }
+
+
     // Check for conflicts with in-memory transactions
     if (!tx.IsZerocoinSpend()) {
         LOCK(pool.cs); // protect pool.mapNextTx
@@ -2126,15 +2154,13 @@ int64_t GetBlockValue(int nHeight)
     if (nHeight < 15) {
         nSubsidy = 100000 * COIN; // Premine Phase
     } else if (nHeight <= Params().PRESALE_START_BLOCK() && nHeight >= 15) {     
-        nSubsidy = 0.001 * COIN; // Kickstart Phase
+        nSubsidy = 0.001 * COIN; // Presale Phase including both POW + POS
     } else if (nHeight <= Params().PRESALE_END_BLOCK() && nHeight >= Params().PRESALE_START_BLOCK() + 1) {
-        nSubsidy = 80.001 * COIN; // Presale Phase
-    } else if (nHeight <= Params().LAST_POW_BLOCK() && nHeight >= Params().PRESALE_END_BLOCK() + 1) {     
-        nSubsidy = 100 * COIN; // PoW Phase
-    } else if (nHeight <= 350400 && nHeight >= Params().LAST_POW_BLOCK() + 1) {
-        nSubsidy = 100 * COIN; // PoS Phase
+        nSubsidy = 80.001 * COIN; 
+    } else if (nHeight <= 350400 && nHeight >= Params().PRESALE_END_BLOCK() + 1) {
+        nSubsidy = 100 * COIN; // First Year
     } else if (nHeight <= 700800 && nHeight >= 350401) {
-        nSubsidy = 50 * COIN;
+        nSubsidy = 50 * COIN; // First Halving
     } else if (nHeight >= 700801) {
         nSubsidy = 25 * COIN;
     }
@@ -5625,7 +5651,8 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         // available. If not, ask the first peer connected for them.
         bool fMissingSporks = !pSporkDB->SporkExists(SPORK_14_NEW_PROTOCOL_ENFORCEMENT) &&
                 !pSporkDB->SporkExists(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2) &&
-                !pSporkDB->SporkExists(SPORK_16_ZEROCOIN_MAINTENANCE_MODE);
+                !pSporkDB->SporkExists(SPORK_16_ZEROCOIN_MAINTENANCE_MODE) &&
+                !pSporkDB->SporkExists(SPORK_17_POS_ENFORCEMENT);
 
         if (fMissingSporks || !fRequestedSporksIDB){
             LogPrintf("asking peer for sporks\n");
@@ -6441,7 +6468,8 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 //       it was the one which was commented out
 int ActiveProtocol()
 {
-
+    if (IsSporkActive(SPORK_17_POS_ENFORCEMENT))
+	    return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
     if (IsSporkActive(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2))
             return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
     return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;

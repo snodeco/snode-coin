@@ -45,23 +45,23 @@
 </tbody>
 <tbody>
 	<tr><th>Kickstart Phase</th><th>Block Height</th><th>Block Reward</th><th>Masternodes</th><th>Miners</th></tr>	
-	<tr><td></td><td>16 - 9 000</td><td>0.001 SND</td><td>0 SND</td><td>0.001 SND</td><th></tr>
+	<tr><td></td><td>16 - 9 000</td><td>0.001 SND</td><td>0 SND</td><td>0.001 SND</td></tr>
 </tbody>
 <tbody>
-	<tr><th>Presale Phase</th><th>Block Height</th><th>Block Reward</th><th>Masternodes</th><th>Miners</th></tr>	
-	<tr><td></td><td>9 001 - 16 000</td><td>80.001 SND</td><td>80 SND</td><td>0.001 SND</td><th></tr>
-</tbody>
-<tbody>
-	<tr><th>Postsale Phase</th><th>Block Height</th><th>Block Reward</th><th>Masternodes</th><th>Miners</th></tr>	
-	<tr><td></td><td>16 001 - 172 800</td><td>100 SND</td><td>80 SND</td><td>20 SND</td><th></tr>
+	<tr><th>POW Presale Phase</th><th>Block Height</th><th>Block Reward</th><th>Masternodes</th><th>Miners</th></tr>	
+	<tr><td></td><td>9 001 - 13 000</td><td>80.001 SND</td><td>80 SND</td><td>0.001 SND</td></tr>
 </tbody>
 </table>
 
 <h3>PoS Rewards Breakdown</h3>
 <table>
 <tbody>
-	<tr><th>PoS Phase I</th><th>Block Height</th><th>Block Reward</th><th>Masternodes</th><th>Stakers</th></tr>
-	<tr><td></td><td>172 801 - 350 400</td><td>100 SND</td><td>80 SND</td><td>20 SND</td></tr>
+	<tr><th>POS Presale Phase</th><th>Block Height</th><th>Block Reward</th><th>Masternodes</th><th>Stakers</th></tr>	
+	<tr><td></td><td>13 001 - 15 000</td><td>80.001 SND</td><td>80 SND</td><td>0.001 SND</td></tr>
+</tbody>
+<tbody>
+	<tr><th>PoS Phase I</th><th>Block Height</th><th>Block Reward</th><th>Masternodes</th><th>Stakers</th></tr>	
+	<tr><td></td><td>15 001 - 350 400</td><td>100 SND</td><td>80 SND</td><td>20 SND</td></tr>
 </tbody>
 <tbody>
 	<tr><th>PoS Phase II</th><th>Block Height</th><th>Block Reward</th><th>Masternodes</th><th>Stakers</th></tr>

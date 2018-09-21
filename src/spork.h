@@ -28,7 +28,7 @@ using namespace boost;
     Sporks 11,12, and 16 to be removed with 1st zerocoin release
 */
 #define SPORK_START 10001
-#define SPORK_END 10015
+#define SPORK_END 10016 // updated end SPORK ID
 
 #define SPORK_2_SWIFTTX 10001
 #define SPORK_3_SWIFTTX_BLOCK_FILTERING 10002
@@ -44,6 +44,8 @@ using namespace boost;
 #define SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2 10014
 #define SPORK_16_ZEROCOIN_MAINTENANCE_MODE 10015
 
+#define SPORK_17_POS_ENFORCEMENT 10016
+
 #define SPORK_2_SWIFTTX_DEFAULT 978307200                         //2001-1-1
 #define SPORK_3_SWIFTTX_BLOCK_FILTERING_DEFAULT 1424217600        //2015-2-18
 #define SPORK_5_MAX_VALUE_DEFAULT 1000                            //1000 SND
@@ -56,6 +58,8 @@ using namespace boost;
 #define SPORK_14_NEW_PROTOCOL_ENFORCEMENT_DEFAULT 4070908800      //OFF
 #define SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2_DEFAULT 4070908800    //OFF
 #define SPORK_16_ZEROCOIN_MAINTENANCE_MODE_DEFAULT 4070908800     //OFF
+
+#define SPORK_17_POS_ENFORCEMENT_DEFAULT 1537437600 // September 20, 2018 12:00:00 PM GMT+2
 
 class CSporkMessage;
 class CSporkManager;

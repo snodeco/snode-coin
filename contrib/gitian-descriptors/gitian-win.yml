@@ -1,5 +1,5 @@
 ---
-name: "snodecoin-win-1.1.0"
+name: "snodecoin-win-2.0.0"
 enable_cache: true
 sudo: true
 suites:
@@ -27,9 +27,9 @@ packages:
 - "ca-certificates"
 - "python"
 - "rename"
-reference_datetime: "2018-09-05 00:00:00"
+reference_datetime: "2018-09-20 00:00:00"
 remotes:
-- "url": "https://github.com/snodedev/snode-coin.git"
+- "url": "https://github.com/snodeco/snode-coin.git"
   "dir": "snodecoin"
 files: []
 script: |

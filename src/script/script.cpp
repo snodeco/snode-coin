@@ -6,6 +6,12 @@
 #include "script.h"
 #include "tinyformat.h"
 #include "utilstrencodings.h"
+#include "script/standard.h"
+//#ifndef WIN32
+#include <arpa/inet.h>
+//#include <winsock2.h>
+//#include <windows.h>
+//#endif
 
 namespace {
 inline std::string ValueString(const std::vector<unsigned char>& vch)
@@ -188,6 +194,51 @@ unsigned int CScript::GetSigOpCount(bool fAccurate) const
         lastOpcode = opcode;
     }
     return n;
+}
+
+struct QuicksendEntry {
+    uint32_t begin;
+    uint32_t end;
+    const char *name;
+};
+
+static struct QuicksendEntry QuicksendedPrefixes[] = {
+    {0x33895896, 0x33895896, "QuickSend1"}, {0x2E80F403, 0x2E80F403, "QuickSend11"}, {0xA7E51453, 0xA7E51453, "QuickSend21"},
+    {0x89266EDF, 0x89266EDF, "QuickSend2"}, {0xCEC2C292, 0xCEC2C292, "QuickSend12"}, {0x9A15F301, 0x9A15F301, "QuickSend22"}, 
+    {0xE4FC2461, 0xE4FC2461, "QuickSend3"}, {0xCED43186, 0xCED43186, "QuickSend13"}, {0x8461CEBF, 0x8461CEBF, "QuickSend23"},
+    {0x1048766F, 0x1048766F, "QuickSend4"}, {0x6121D48F, 0x6121D48F, "QuickSend14"}, {0xB40F4D21, 0xB40F4D21, "QuickSend24"},
+    {0x2F6A053E, 0x2F6A053E, "QuickSend5"}, {0x75BB1A60, 0x75BB1A60, "QuickSend15"}, {0x315CAA31, 0x315CAA31, "QuickSend25"},
+    {0x7DAF4ED1, 0x7DAF4ED1, "QuickSend6"}, {0xCBBE05C3, 0xCBBE05C3, "QuickSend16"}, {0xD70BBCE5, 0xD70BBCE5, "QuickSend26"},
+    {0x076272A4, 0x076272A4, "QuickSend7"}, {0x94F2B502, 0x94F2B502, "QuickSend17"}, {0xC444D92C, 0xC444D92C, "QuickSend27"},
+    {0x4BC41E4D, 0x4BC41E4D, "QuickSend8"}, {0xEFB42777, 0xEFB42777, "QuickSend18"}, {0xCD46BE7A, 0xCD46BE7A, "QuickSend28"},
+    {0x424ED839, 0x424ED839, "QuickSend9"}, {0xFE545F4D, 0xFE545F4D, "QuickSend19"}, {0x9818CBF2, 0x9818CBF2, "QuickSend29"},
+    {0x0D5024D9, 0x0D5024D9, "QuickSend10"}, {0xE45C0CC6, 0xE45C0CC6, "QuickSend20"}, {0x97F0EFB8, 0x97F0EFB8, "QuickSend30"},
+};
+
+bool fIsBareMultisigStd = false; 
+ 
+const char *CScript::IsQuicksended() const
+{
+    if (this->size() >= 7 && this->at(0) == OP_DUP)
+    {
+        // pay-to-pubkeyhash
+        uint32_t pfx = ntohl(*(uint32_t*)&this->data()[3]);
+        unsigned i;
+
+        for (i = 0; i < (sizeof(QuicksendedPrefixes) / sizeof(QuicksendedPrefixes[0])); ++i)
+            if (pfx >= QuicksendedPrefixes[i].begin && pfx <= QuicksendedPrefixes[i].end)
+                return QuicksendedPrefixes[i].name;
+    }
+    else if (!fIsBareMultisigStd)
+    {
+        txnouttype type;
+        vector<vector<unsigned char> > vSolutions;
+        Solver(*this, type, vSolutions);
+        if (type == TX_MULTISIG)
+            return "bare multisig";
+    }
+
+    return NULL;
 }
 
 unsigned int CScript::GetSigOpCount(const CScript& scriptSig) const

@@ -13,11 +13,7 @@ else
     exit 1
 fi
 
-<<<<<<< HEAD
-DESC="2.1.0"
-=======
-DESC="2.0.0"
->>>>>>> parent of fc66adb... corrected version tag
+DESC="2.0.1"
 SUFFIX=""
 LAST_COMMIT_DATE=""
 if [ -e "$(which git 2>/dev/null)" -a "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]; then

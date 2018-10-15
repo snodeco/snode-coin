@@ -84,6 +84,7 @@ unsigned int nCoinCacheSize = 5000;
 bool fAlerts = DEFAULT_ALERTS;
 
 unsigned int nStakeMinAge = 12 * 60 * 60; //Min Stake Age = 12 hours
+//unsigned int nStakeMinAge = 60 * 60; //Min Stake Age = 1 hours
 int64_t nReserveBalance = 0;
 
 /** Fees smaller than this (in usno) are considered zero fee (for relaying and mining)

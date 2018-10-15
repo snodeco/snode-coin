@@ -64,6 +64,7 @@ SendCoinsDialog::SendCoinsDialog(QWidget* parent) : QDialog(parent),
     QSettings settings;
     if (!settings.contains("bUseObfuScation"))
         settings.setValue("bUseObfuScation", false);
+    
     if (!settings.contains("bUseSwiftTX"))
         settings.setValue("bUseSwiftTX", false);
 
@@ -73,11 +74,13 @@ SendCoinsDialog::SendCoinsDialog(QWidget* parent) : QDialog(parent),
         CoinControlDialog::coinControl->useObfuScation = false;
         CoinControlDialog::coinControl->useSwiftTX = false;
     } else {
-        ui->checkSwiftTX->setChecked(useSwiftTX);
-        CoinControlDialog::coinControl->useSwiftTX = useSwiftTX;
+        ui->checkSwiftTX->setVisible(false);
+        //ui->checkSwiftTX->setChecked(useSwiftTX); //snode commented
+        //CoinControlDialog::coinControl->useSwiftTX = useSwiftTX; //snode commented
+        CoinControlDialog::coinControl->useSwiftTX = false;
     }
 
-    connect(ui->checkSwiftTX, SIGNAL(stateChanged(int)), this, SLOT(updateSwiftTX()));
+    //connect(ui->checkSwiftTX, SIGNAL(stateChanged(int)), this, SLOT(updateSwiftTX())); //snode commented
 
     // Coin Control: clipboard actions
     QAction* clipboardQuantityAction = new QAction(tr("Copy quantity"), this);

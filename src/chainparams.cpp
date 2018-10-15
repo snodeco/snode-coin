@@ -54,12 +54,17 @@ static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
     (0, uint256("0x00000dd8e25853fb3242874e77d0f1903de16224fd5ed4a617a6e6ba6a2d3306"))
     (13001, uint256("0x4c9ec79f436276d26b8247ec9d440addabd0cd695e836af4705794d5c1162a80"))
-    (13100, uint256("0x73cbd748f06369612840753c99632a5c319d8ea252eeada6dcac23ac094efb81")); 
+    (13100, uint256("0x73cbd748f06369612840753c99632a5c319d8ea252eeada6dcac23ac094efb81"))
+    (36288, uint256("0x101fe9648bd75ff8e73f494a07b60639d449dfbd6786ac350372f18526f9a2b6"))
+    (36289, uint256("0x422fd871209f26c0dbd5ca260773642c2c793283683254f679a0210ecd1b5e9e"))
+    (36290, uint256("0x6cdfb9178ffc08d6aace8ea026859bdf75bd2ce9d3e8c0865185bd3d4433941c"))
+    (36320, uint256("0xc055dd4c69f437e7d8d06cee0134fc6317106a2073df72bcf0a5eb355db2e09c"))
+    (36440, uint256("0xcd2cdb4b10bcc20bcdf66c056d5e754fe926033f945a0d5df821112b513a3d732")); 
     
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-   1537453894,
-    13549,    // * total number of transactions between genesis and last checkpoint
+   1539589552,
+    65194,    // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     500        // * estimated number of transactions per day after checkpoint
 };
@@ -201,7 +206,7 @@ public:
         fHeadersFirstSyncingActive = false;
 
         nPoolMaxTransactions = 3;
-        strSporkKey = "04503afec49f9d5aef6cbf722d0001eea59617506ebfd03dc5bd1dbefb6532151db00080723c22402d33ac373f048bbaad8941b5078adb679d72bc5741c96edb4f";
+        strSporkKey = "04e0d865b25de00d27941e8954dcdbe263328c127a1f0a49250af3533830f018701a144c094a805674743ddbf3c5a0292c360ec418c0cf64791fd163ce40c2d36c";
         strObfuscationPoolDummyAddress = "SffPqR2Dd8Bs1kjXJPmDxDV1aiTNHAeVN2";
         nStartMasternodePayments = genesis.nTime + 60 * 60; // 1 hr after genesis 
 
@@ -304,7 +309,7 @@ public:
         fTestnetToBeDeprecatedFieldRPC = true;
 
         nPoolMaxTransactions = 2;
-        strSporkKey = "04f97163d3e0d5a08687a9abaae4a1de06722d9e927b95637a7161185bddfe7f693b525d605c91c26db5af2076a11fa29f9e15d1c628534a717976af0b8b155083";
+        strSporkKey = "04bff6b362b7a4bc8f7cbbe2c0666166fded0cd531d0390bcc6e32e42a059a29b5bb3c034a652fbf6d1dfe9f5dabad16fc0a5696eb18167821d35195b78ced58df";
         strObfuscationPoolDummyAddress = "SffPqR2Dd8Bs1kjXJPmDxDV1aiTNHAeVN2";
         nStartMasternodePayments = genesis.nTime + 3600; // 1 hr after genesis
         nBudget_Fee_Confirmations = 3; // Number of confirmations for the finalization fee. 

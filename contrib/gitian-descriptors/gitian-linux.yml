@@ -1,5 +1,5 @@
 ---
-name: "snodecoin-linux-2.0.0"
+name: "snodecoin-linux-3.0.0"
 enable_cache: true
 sudo: true
 suites:
@@ -29,7 +29,7 @@ packages:
 - "ca-certificates"
 - "python"
 - "xutils-dev"
-reference_datetime: "2018-09-20 00:00:00"
+reference_datetime: "2018-10-14 00:00:00"
 remotes:
 - "url": "https://github.com/snodeco/snode-coin.git"
   "dir": "snodecoin"
@@ -37,7 +37,7 @@ files: []
 script: |
 
   WRAP_DIR=$HOME/wrapped
-  HOSTS="x86_64-linux-gnu"
+  HOSTS="i686-pc-linux-gnu x86_64-linux-gnu arm-linux-gnueabihf"
   CONFIGFLAGS="--enable-glibc-back-compat --enable-reduce-exports --disable-bench --disable-gui-tests"
   FAKETIME_HOST_PROGS=""
   FAKETIME_PROGS="date ar ranlib nm"

@@ -1,5 +1,5 @@
 ---
-name: "snodecoin-linux-3.0.0"
+name: "snodecoin-linux-3.0.1"
 enable_cache: true
 sudo: true
 suites:

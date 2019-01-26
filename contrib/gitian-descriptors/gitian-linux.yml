@@ -1,5 +1,5 @@
 ---
-name: "snodecoin-linux-3.0.1"
+name: "snodecoin-linux-3.1.0"
 enable_cache: true
 sudo: true
 suites:
@@ -29,7 +29,7 @@ packages:
 - "ca-certificates"
 - "python"
 - "xutils-dev"
-reference_datetime: "2018-10-14 00:00:00"
+reference_datetime: "2019-01-25 10:00:00"
 remotes:
 - "url": "https://github.com/snodeco/snode-coin.git"
   "dir": "snodecoin"
